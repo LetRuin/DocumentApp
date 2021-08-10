@@ -16,6 +16,7 @@ namespace DocumentEditor_CLI
             Console.WriteLine("Выьерите какой файл вы хотели бы открыть:");
             Console.WriteLine("1. TXT");
             Console.WriteLine("2. MD");
+            Console.WriteLine("3. jpg");
             var select = Console.ReadLine();
             switch (select)
             {
@@ -26,6 +27,10 @@ namespace DocumentEditor_CLI
                 case "2":
                     fileWorking = new MdFileWorking();
                     path = @"C:\Users\Stari\Desktop\BestOil.md";
+                    break;
+                case "3":
+                    fileWorking = new MdFileWorking();
+                    path = @"C:\Users\LetRuin\Desktop\Безымянный33.jpg";
                     break;
                 default:
                     return;
@@ -49,6 +54,9 @@ namespace DocumentEditor_CLI
                 case "DocumentLib.Document.MdDocument":
                     MdShow(document);
                     break;
+                case "DocumentLib.Document.JPGDocument":
+                    JPGShow(document);
+                    break;
             }
         }
 
@@ -62,6 +70,12 @@ namespace DocumentEditor_CLI
         static void MdShow(Document document)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(document.Content);
+            Console.ResetColor();
+        }
+        static void JPGShow(Document document)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(document.Content);
             Console.ResetColor();
         }
